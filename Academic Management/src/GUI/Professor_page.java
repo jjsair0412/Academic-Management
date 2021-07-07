@@ -13,8 +13,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class Professor_page extends JFrame{
-	DB proFessorDB = new DB();
-	Info info = new Info();
+	private DB proFessorDB = new DB();
+	private Info info = new Info();
+	private JTextField id_Text, number_Text, name_Text, age_Text, sex_Text, major_Text, point_Text = null;
 	
 	public Professor_page() {
 		setTitle("교수 페이지입니다");
@@ -24,13 +25,13 @@ public class Professor_page extends JFrame{
 		Container c= getContentPane();
 		c.setLayout(new FlowLayout());
 		
-		JTextField id_Text = new JTextField("여기에 학생 ID 입력해주세요");
-		JTextField number_Text = new JTextField("여기에 학생 학번 입력해주세요");
-		JTextField name_Text = new JTextField("여기에 학생 이름 입력해주세요");
-		JTextField age_Text = new JTextField("여기에 학생 나이 입력해주세요");
-		JTextField sex_Text = new JTextField("여기에 학생 성별 입력해주세요");
-		JTextField major_Text = new JTextField("여기에 학생 전공 입력해주세요");
-		JTextField point_Text = new JTextField("여기에 학생 점수 입력해주세요");
+		id_Text = new JTextField("여기에 학생 ID 입력해주세요");
+		number_Text = new JTextField("여기에 학생 학번 입력해주세요");
+		name_Text = new JTextField("여기에 학생 이름 입력해주세요");
+		age_Text = new JTextField("여기에 학생 나이 입력해주세요");
+		sex_Text = new JTextField("여기에 학생 성별 입력해주세요");
+		major_Text = new JTextField("여기에 학생 전공 입력해주세요");
+		point_Text = new JTextField("여기에 학생 점수 입력해주세요");
 		
 		JTextField[] textFiled = {id_Text, number_Text,name_Text,age_Text,sex_Text,major_Text,point_Text};
 		
