@@ -131,8 +131,8 @@ public class Professor_DB extends DB_ConnectionClass implements CRUD{
             	pstmt.setInt(1, Integer.parseInt(changeValue));
             	pstmt.setString(2, id);
             }else if((whereChange.equals("name"))){
-            	String Agesql = "update info set name = ? where id=?";
-            	pstmt = getConn().prepareStatement(Agesql);     
+            	String Namesql = "update info set name = ? where id=?";
+            	pstmt = getConn().prepareStatement(Namesql);     
             	pstmt.setString(1, changeValue);
             	pstmt.setString(2, id);
             }else if((whereChange.equals("age"))){
@@ -141,18 +141,18 @@ public class Professor_DB extends DB_ConnectionClass implements CRUD{
             	pstmt.setInt(1, Integer.parseInt(changeValue));
             	pstmt.setString(2, id);
             }else if((whereChange.equals("sex"))){
-            	String Agesql = "update info set sex = ? where id=?";
-            	pstmt = getConn().prepareStatement(Agesql);     
+            	String Sexsql = "update info set sex = ? where id=?";
+            	pstmt = getConn().prepareStatement(Sexsql);     
             	pstmt.setString(1, changeValue);
             	pstmt.setString(2, id);
             }else if((whereChange.equals("major"))){
-            	String Agesql = "update info set major = ? where id=?";
-            	pstmt = getConn().prepareStatement(Agesql);     
+            	String Majorsql = "update info set major = ? where id=?";
+            	pstmt = getConn().prepareStatement(Majorsql);     
             	pstmt.setString(1, changeValue);
             	pstmt.setString(2, id);
             }else if((whereChange.equals("point"))){
-            	String Agesql = "update info set point = ? where id=?";
-            	pstmt = getConn().prepareStatement(Agesql);     
+            	String Pointsql = "update info set point = ? where id=?";
+            	pstmt = getConn().prepareStatement(Pointsql);     
             	pstmt.setInt(1, Integer.parseInt(changeValue));
             	pstmt.setString(2, id);
             }else {
