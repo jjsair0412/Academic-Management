@@ -4,6 +4,9 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
+import GUI.Loading;
+import GUI.MyFrame;
+
 public class DB_ConnectionClass {
 	private Connection conn; //DB 커넥션 연결 객체
     private static final String USERNAME = "root";//DBMS접속 시 아이디
@@ -13,10 +16,12 @@ public class DB_ConnectionClass {
     
     public DB_ConnectionClass() {
         try {
+        	
             System.out.println("데이터베이스 연결중..");
             Class.forName("com.mysql.jdbc.Driver");
             conn = DriverManager.getConnection(URL, USERNAME, PASSWORD);
             System.out.println("드라이버 로딩 성공");
+           
         } catch (Exception e) {
             System.out.println("드라이버 로딩 실패 ");
             try {
