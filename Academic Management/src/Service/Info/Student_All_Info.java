@@ -1,6 +1,6 @@
-package Service;
+package Service.Info;
 
-public class Info {
+public class Student_All_Info {
 	private String id; // id
 	private int number; // 학번
 	private String name; // 이름

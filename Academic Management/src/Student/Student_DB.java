@@ -3,10 +3,10 @@ package Student;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
-import Service.CRUD;
-import Service.DB_ConnectionClass;
+import Service.DB.CRUD.Student_All_Info_CRUD;
+import ServiceDBConnection.DB_ConnectionClass;
 
-public class Student_DB extends DB_ConnectionClass implements CRUD{
+public class Student_DB extends DB_ConnectionClass implements Student_All_Info_CRUD{
 
 	@Override
 	public void infoCreate(String id, int number, String name, int age, String sex, String major, int point) {

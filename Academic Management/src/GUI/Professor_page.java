@@ -6,8 +6,8 @@ import javax.swing.JFrame;
 import javax.swing.JTextField;
 
 import Professor.Professor_DB;
-import Service.DB_ConnectionClass;
-import Service.Info;
+import Service.Info.Student_All_Info;
+import ServiceDBConnection.DB_ConnectionClass;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -15,7 +15,7 @@ import java.awt.event.ActionListener;
 
 public class Professor_page extends JFrame{
 	private Professor_DB proFessorDB = new Professor_DB();
-	private Info info = new Info();
+	private Student_All_Info info = new Student_All_Info();
 	private JTextField id_Text, number_Text, name_Text, age_Text, 
 	sex_Text, major_Text, point_Text, findOneStudent, 
 	updatewhereChange, updatevalue, updateid, deleteid= null;
@@ -25,7 +25,6 @@ public class Professor_page extends JFrame{
 		setTitle("교수 페이지입니다");
 		setSize(1000,500);
 		
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		Container c= getContentPane();
 		c.setLayout(new FlowLayout());
 		
@@ -42,8 +41,20 @@ public class Professor_page extends JFrame{
 		updateid = new JTextField("수정하려면 학생 id를 입력하세요,");
 		deleteid = new JTextField("삭제할 id를 입력하세요");
 		
-		JTextField[] textFiled = {id_Text, number_Text,name_Text,age_Text,sex_Text,
-				major_Text,point_Text,findOneStudent,updatewhereChange,updatevalue,updateid,deleteid};
+		JTextField[] textFiled = {
+				id_Text, 
+				number_Text,
+				name_Text,
+				age_Text,
+				sex_Text,
+				major_Text,
+				point_Text,
+				findOneStudent,
+				updatewhereChange,
+				updatevalue,
+				updateid,
+				deleteid
+				};
 		
 		for(int i = 0; i<textFiled.length; i++) {
 			c.add(textFiled[i]);
@@ -62,7 +73,15 @@ public class Professor_page extends JFrame{
 				info.setMajor(major_Text.getText());
 				info.setPoint(Integer.parseInt(point_Text.getText()));
 				
-				proFessorDB.infoCreate(info.getId(), info.getNumber(), info.getName(), info.getAge(), info.getSex(), info.getMajor(), info.getPoint());
+				proFessorDB.infoCreate(
+						info.getId(), 
+						info.getNumber(), 
+						info.getName(), 
+						info.getAge(), 
+						info.getSex(), 
+						info.getMajor(), 
+						info.getPoint()
+						);
 			}
 		});
 		
