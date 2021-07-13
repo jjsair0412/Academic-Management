@@ -20,6 +20,7 @@ public class MyFrame extends JFrame {
 	private Professor_page professor_page;
 	private StudentJoinPage studentJoin;
 	private ProfessorJoinPage professorJoin;
+	private Alarm alarm;
 	private Professor_Join professor_Join = new Professor_Join();
 	private Student_Join student_Join = new Student_Join();
 	private String nowId = null;
@@ -60,13 +61,13 @@ public class MyFrame extends JFrame {
 				nowPw = Integer.parseInt(pw_Text.getText());
 				
 				if (stuIdlist.contains(nowId) && stuPwlist.contains(nowPw)) {
-					professor_page = new Professor_page();
-					System.out.println("로그인 성공");
+					alarm = new Alarm("로그인 성공");
+					student_page = new Student_page(nowId);
 
 				} else if (stuIdlist.contains(nowId) || stuPwlist.contains(nowPw)) {
-					System.out.println("pw나 id를 잘못 입력하셨습니다.");
+					alarm = new Alarm("Id나 비밀번호를 잘못 입력하셨습니다.");
 				} else {
-					System.out.println("해당 회원이 없습니다.회원가입을 진행해 주세요.");
+					alarm = new Alarm("해당 회원이 없어요. 회원가입을 진행해 주세요");
 				}
 
 			}
@@ -91,13 +92,14 @@ public class MyFrame extends JFrame {
 				nowPw = Integer.parseInt(pw_Text.getText());
 				
 				if (proIdlist.contains(nowId) && proPwlist.contains(nowPw)) {
+					alarm = new Alarm("로그인 성공");
 					professor_page = new Professor_page();
-					System.out.println("로그인 성공");
+					
 
 				} else if (proIdlist.contains(nowId) || proPwlist.contains(nowPw)) {
-					System.out.println("pw나 id를 잘못 입력하셨습니다.");
+					alarm = new Alarm("Id나 비밀번호를 잘못 입력하셨습니다.");
 				} else {
-					System.out.println("해당 회원이 없습니다.회원가입을 진행해 주세요.");
+					alarm = new Alarm("해당 회원이 없어요. 회원가입을 진행해 주세요");
 				}
 
 			}

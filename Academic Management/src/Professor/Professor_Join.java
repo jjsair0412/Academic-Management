@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 
+import GUI.Alarm;
 import Service.DB.CRUD.Professor_join_CRUD;
 import Service.Info.ProfessorIdPw_info;
 import ServiceDBConnection.DB_ConnectionClass;
@@ -14,6 +15,7 @@ public class Professor_Join extends DB_ConnectionClass implements Professor_join
 	 	public static ArrayList<String> ProId = new ArrayList<String>();
 	    public static ArrayList<Integer> ProPw = new ArrayList<Integer>();
 	    private ProfessorIdPw_info proIdPw = new ProfessorIdPw_info();
+	    private Alarm alarm;
 		
 	    // professor_join Table 에서 id값만 뽑아오는 getProfessorId()
 	    @Override
@@ -92,10 +94,10 @@ public class Professor_Join extends DB_ConnectionClass implements Professor_join
             int result = pstmt.executeUpdate();
             
             if(result==1) {
-                System.out.println("회원가입 완료");
+            	alarm = new Alarm("회원가입 완료");
             }
         } catch (Exception e) {
-            System.out.println("이미 존재하는 ID입니다. 다시 작성해주세요.");
+        	alarm = new Alarm("이미 존재하는 ID입니다. 다시 작성해주세요");
         }    finally {
             try {
                 if(pstmt!=null && !pstmt.isClosed()) {

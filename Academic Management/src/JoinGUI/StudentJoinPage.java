@@ -9,6 +9,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JTextField;
 
+import GUI.Alarm;
 import Service.Info.Student_Join_info;
 import Student.Student_Join;
 

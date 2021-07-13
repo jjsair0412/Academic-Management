@@ -16,8 +16,7 @@ import java.awt.event.ActionListener;
 public class Professor_page extends JFrame{
 	private Professor_DB proFessorDB = new Professor_DB();
 	private Student_All_Info info = new Student_All_Info();
-	private JTextField id_Text, number_Text, name_Text, age_Text, 
-	sex_Text, major_Text, point_Text, findOneStudent, 
+	private JTextField id_Text, point_Text, findOneStudent, 
 	updatewhereChange, updatevalue, updateid, deleteid= null;
 	JButton insertBtn, findOneBtn, allStudentInfoBtn, updateBtn, deleteBtn;
 	
@@ -29,11 +28,6 @@ public class Professor_page extends JFrame{
 		c.setLayout(new FlowLayout());
 		
 		id_Text = new JTextField("여기에 학생 ID 입력해주세요");
-		number_Text = new JTextField("여기에 학생 학번 입력해주세요");
-		name_Text = new JTextField("여기에 학생 이름 입력해주세요");
-		age_Text = new JTextField("여기에 학생 나이 입력해주세요");
-		sex_Text = new JTextField("여기에 학생 성별 입력해주세요");
-		major_Text = new JTextField("여기에 학생 전공 입력해주세요");
 		point_Text = new JTextField("여기에 학생 점수 입력해주세요");
 		findOneStudent = new JTextField("찾으려는 학생의 id를 입력해주세요");
 		updatewhereChange = new JTextField("무슨값을 변경할까요?");
@@ -43,11 +37,6 @@ public class Professor_page extends JFrame{
 		
 		JTextField[] textFiled = {
 				id_Text, 
-				number_Text,
-				name_Text,
-				age_Text,
-				sex_Text,
-				major_Text,
 				point_Text,
 				findOneStudent,
 				updatewhereChange,
@@ -60,26 +49,16 @@ public class Professor_page extends JFrame{
 			c.add(textFiled[i]);
 		}
 		
-		insertBtn = new JButton("학생정보 입력");
+		insertBtn = new JButton("학생점수 입력");
 		c.add(insertBtn);
 		insertBtn.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				info.setId(id_Text.getText());
-				info.setNumber(Integer.parseInt(number_Text.getText()));
-				info.setName(name_Text.getText()); 
-				info.setAge(Integer.parseInt(age_Text.getText()));
-				info.setSex(sex_Text.getText());
-				info.setMajor(major_Text.getText());
 				info.setPoint(Integer.parseInt(point_Text.getText()));
 				
 				proFessorDB.infoCreate(
 						info.getId(), 
-						info.getNumber(), 
-						info.getName(), 
-						info.getAge(), 
-						info.getSex(), 
-						info.getMajor(), 
 						info.getPoint()
 						);
 			}
