@@ -12,13 +12,13 @@ import javax.swing.JTextField;
 import Professor.Professor_Join;
 import Service.Info.Professor_Join_info;
 
-public class ProfessorJoin extends JFrame {
+public class ProfessorJoinPage extends JFrame {
 	private JTextField idText, nameText, ageText, sexText, majorText, pwText= null;
 	private Professor_Join professor_Join = new Professor_Join();
 	private Professor_Join_info professor_Join_info = new Professor_Join_info();
 	JButton JoinBtn, CheckBtn, UpdateBtn, DropBtn; 
 	
-	public ProfessorJoin() {
+	public ProfessorJoinPage() {
 		setTitle("교수 회원가입창 입니다."); 
 		setSize(1000,500); 
 		

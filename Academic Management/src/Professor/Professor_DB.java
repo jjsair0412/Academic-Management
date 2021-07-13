@@ -11,62 +11,6 @@ import ServiceDBConnection.DB_ConnectionClass;
 
 public class Professor_DB extends DB_ConnectionClass implements Student_All_Info_CRUD{
 
-    public static ArrayList<String> ProId = new ArrayList<String>();
-    public static ArrayList<Integer> ProPw = new ArrayList<Integer>();
-    
-	// professor_join Table 에서 id값만 뽑아오는 getProfessorId()
-	public ArrayList<String> getProfessorId() {
-		// id값을 비교해서 비교한 id값 한가지를 가지고옴
-        String sql = "select id from professor_join";
-        PreparedStatement pstmt = null;
-        try {
-            pstmt = getConn().prepareStatement(sql);
-            ResultSet rs = pstmt.executeQuery();
-            if(rs.next()) {
-                System.out.println("id : " + rs.getString("id"));
-                ProId.add(rs.getString("id"));
-            }else {
-            	System.out.println("교수 회원이 존재하지 않습니다.");
-            }
-     
-        } catch (Exception e) {
-            System.out.println("select 메서드 예외발생");
-        }    finally {
-            try {
-                if(pstmt!=null && !pstmt.isClosed()) {
-                    pstmt.close();
-                }
-            } catch (Exception e2) {}
-        }
-		return ProId;
-		
-	}
-	// professor_join Table pw값만 뽑아오는 getProfessorPw() 
-	public ArrayList<Integer> getProfessorPw() {
-		// id값을 비교해서 비교한 id값 한가지를 가지고옴
-        String sql = "select proPw from professor_join";
-        PreparedStatement pstmt = null;
-        try {
-            pstmt = getConn().prepareStatement(sql);
-            ResultSet rs = pstmt.executeQuery();
-            if(rs.next()) {
-            	ProPw.add(rs.getInt("proPw"));
-            }else {
-            	System.out.println("교수 회원이 존재하지 않습니다.");
-            }
-     
-        } catch (Exception e) {
-            System.out.println("select 메서드 예외발생");
-        }    finally {
-            try {
-                if(pstmt!=null && !pstmt.isClosed()) {
-                    pstmt.close();
-                }
-            } catch (Exception e2) {}
-        }
-		return ProPw;
-	}
-	
     // 학생정보 입력
 	@Override
 	public void infoCreate(String id, int number, String name, int age, String sex, String major, int point) {	

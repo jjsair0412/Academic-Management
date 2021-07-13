@@ -2,11 +2,74 @@ package Professor;
 
 import java.sql.PreparedStatement;
 
+import java.sql.ResultSet;
+import java.util.ArrayList;
+
 import Service.DB.CRUD.Professor_join_CRUD;
+import Service.Info.ProfessorIdPw_info;
 import ServiceDBConnection.DB_ConnectionClass;
 
 public class Professor_Join extends DB_ConnectionClass implements Professor_join_CRUD{
-
+	
+	 	public static ArrayList<String> ProId = new ArrayList<String>();
+	    public static ArrayList<Integer> ProPw = new ArrayList<Integer>();
+	    private ProfessorIdPw_info proIdPw = new ProfessorIdPw_info();
+		
+	    // professor_join Table 에서 id값만 뽑아오는 getProfessorId()
+	    @Override
+		public ArrayList<String> getProfessorId() {
+			// id값을 비교해서 비교한 id값 한가지를 가지고옴
+	        String sql = "select id from professor_join";
+	        PreparedStatement pstmt = null;
+	        try {
+	            pstmt = getConn().prepareStatement(sql);
+	            ResultSet rs = pstmt.executeQuery();
+	            if(rs.next()) {
+	            	proIdPw.setProfid(rs.getString("id"));
+	                ProId.add(proIdPw.getProfid());
+	            }else {
+	            }
+	     
+	        } catch (Exception e) {
+	            System.out.println("select 메서드 예외발생");
+	        }    finally {
+	            try {
+	                if(pstmt!=null && !pstmt.isClosed()) {
+	                    pstmt.close();
+	                }
+	            } catch (Exception e2) {}
+	        }
+			return ProId;
+			
+		}
+		// professor_join Table pw값만 뽑아오는 getProfessorPw() 
+	    @Override
+	    public ArrayList<Integer> getProfessorPw() {
+			// id값을 비교해서 비교한 id값 한가지를 가지고옴
+	        String sql = "select proPw from professor_join";
+	        PreparedStatement pstmt = null;
+	        try {
+	            pstmt = getConn().prepareStatement(sql);
+	            ResultSet rs = pstmt.executeQuery();
+	            if(rs.next()) {
+	            	proIdPw.setProfPw(rs.getInt("proPw"));
+	            	ProPw.add(proIdPw.getProfPw());
+	            }else {
+	            }
+	     
+	        } catch (Exception e) {
+	            System.out.println("select 메서드 예외발생");
+	        }    finally {
+	            try {
+	                if(pstmt!=null && !pstmt.isClosed()) {
+	                    pstmt.close();
+	                }
+	            } catch (Exception e2) {}
+	        }
+			return ProPw;
+		}
+		
+	
 	// 회원가입
 	@Override
 	public void Create(String id, String name, int age, String sex, String major, int proPw) {
@@ -24,6 +87,7 @@ public class Professor_Join extends DB_ConnectionClass implements Professor_join
             pstmt.setString(4, sex);
             pstmt.setString(5, major);
             pstmt.setInt(6, proPw);
+     
             
             int result = pstmt.executeUpdate();
             
@@ -42,27 +106,5 @@ public class Professor_Join extends DB_ConnectionClass implements Professor_join
         
 		
 	}
-
-	// 자기정보 보기
-	@Override
-	public void Read() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	// 정보수정
-	@Override
-	public void Update() {
-		// TODO Auto-generated method stub
-		
-	}
-	
-	// 회원탈퇴
-	@Override
-	public void Drop() {
-		// TODO Auto-generated method stub
-		
-	}
-
 
 }
