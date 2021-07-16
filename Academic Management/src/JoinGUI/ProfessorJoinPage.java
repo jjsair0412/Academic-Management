@@ -9,16 +9,23 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JTextField;
 
+import GUI.Alarm;
 import Professor.Professor_Join;
 import Service.Info.Professor_Join_info;
+import SocketConnection.ProfessorClient;
+import SocketConnection.Server;
 
 public class ProfessorJoinPage extends JFrame {
-	private JTextField idText, nameText, ageText, sexText, majorText, pwText= null;
+	private JTextField idText, nameText, ageText, sexText, majorText, pwText, messageText= null;
 	private Professor_Join professor_Join = new Professor_Join();
 	private Professor_Join_info professor_Join_info = new Professor_Join_info();
+	private ProfessorClient professorClient = new ProfessorClient();
+	private String sendMessage, getMessage;
+	private Alarm alarm = null;
 	JButton JoinBtn, CheckBtn, UpdateBtn, DropBtn; 
 	
 	public ProfessorJoinPage() {
+		
 		setTitle("교수 회원가입창 입니다."); 
 		setSize(1000,500); 
 		
@@ -31,7 +38,8 @@ public class ProfessorJoinPage extends JFrame {
 		sexText = new JTextField("성별 입력해주세요");
 		majorText = new JTextField("전공 입력해주세요");
 		pwText = new JTextField("비밀번호 입력해 주세요");
-	
+		messageText = new JTextField("학생에게 보낼 메세지 입력해주세요");
+
 		
 		JTextField[] textFiled = {
 				idText, 
@@ -39,13 +47,18 @@ public class ProfessorJoinPage extends JFrame {
 				ageText, 
 				sexText, 
 				majorText, 
-				pwText
+				pwText,
+				messageText
 				};
 		
 		for(int i = 0; i<textFiled.length; i++) {
 			c.add(textFiled[i]);
 		}
 		
+			sendMessage = messageText.getText();
+			getMessage = professorClient.ProfessorMessageToStu(sendMessage);
+			
+			alarm = new Alarm(getMessage);
 		
 			JoinBtn = new JButton("회원가입 버튼");
 			c.add(JoinBtn);
@@ -69,6 +82,7 @@ public class ProfessorJoinPage extends JFrame {
 							);
 				}
 			});	
+			
 			
 		setVisible(true);
 	}
