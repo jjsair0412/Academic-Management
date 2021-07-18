@@ -1,14 +1,5 @@
 package Main;
 
-import java.sql.Connection;
-
-
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-
-import GUI.Loading;
 import GUI.MyFrame;
 import ServiceDBConnection.DB_ConnectionClass;
 
