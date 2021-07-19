@@ -15,11 +15,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class Student_page extends JFrame {
-	JButton myinfo;
 	JTextField messageText = null;
-	private StudentClient studentClient = new StudentClient();
-	private String sendMessage, getMessage;
-	private Alarm alarm = null;
+	private JButton myinfo;	
 	private Student_DB stDB = new Student_DB();
 	
 	public Student_page(String myId) {
@@ -41,13 +38,7 @@ public class Student_page extends JFrame {
 			}
 		});
 		
-		messageText = new JTextField("여기에 교수님께 보낼 메세지 입력하세요");
-		c.add(messageText);
 		
-		sendMessage = messageText.getText();
-		getMessage = studentClient.StudentMessageToPro(sendMessage);
-		
-		alarm = new Alarm(getMessage);
 		setVisible(true);
 		
 

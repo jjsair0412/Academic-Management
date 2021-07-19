@@ -7,7 +7,7 @@ import java.io.OutputStream;
 import java.net.Socket;
 import java.util.Scanner;
 
-public class StudentClient {
+public class StudentClient{
 	private String messagePro;
 	public String StudentMessageToPro(String message) {
 		

@@ -8,6 +8,7 @@ import javax.swing.JTextField;
 import Professor.Professor_DB;
 import Service.Info.Student_All_Info;
 import ServiceDBConnection.DB_ConnectionClass;
+import SocketConnection.ProfessorClient;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -18,7 +19,8 @@ public class Professor_page extends JFrame{
 	private Student_All_Info info = new Student_All_Info();
 	private JTextField id_Text, point_Text, findOneStudent, 
 	updatewhereChange, updatevalue, updateid, deleteid= null;
-	JButton insertBtn, findOneBtn, allStudentInfoBtn, updateBtn, deleteBtn;
+	private JButton insertBtn, findOneBtn, allStudentInfoBtn, updateBtn, deleteBtn;
+	private ProfessorClient professorClient = new ProfessorClient();
 	
 	public Professor_page() {
 		setTitle("교수 페이지입니다");
@@ -34,7 +36,6 @@ public class Professor_page extends JFrame{
 		updatevalue = new JTextField("어떤값으로 변경할까요?");
 		updateid = new JTextField("수정하려면 학생 id를 입력하세요,");
 		deleteid = new JTextField("삭제할 id를 입력하세요");
-		
 		JTextField[] textFiled = {
 				id_Text, 
 				point_Text,
